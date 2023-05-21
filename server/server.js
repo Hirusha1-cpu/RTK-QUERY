@@ -32,11 +32,9 @@ app.put('/api/:id', (req,res)=>{
     const filterData = data.find((ele) => ele.id === Number(req.params.id));
     if (filterData!== undefined) {
         const updatedBody = {...filterData,...req.body}
-        const updatedData = data.map((ele)=>{
+        const updatedData = data.forEach((ele,index)=>{
             if(ele.id === filterData.id){
-                return updatedBody
-            }else{
-                return ele
+                data[index] = updatedBody;
             }
         })
 
